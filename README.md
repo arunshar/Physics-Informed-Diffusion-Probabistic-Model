@@ -66,7 +66,7 @@ In this example:
 
 Train Pi-DPM on your trajectory dataset by running the training script. This will learn the diffusion model on normal trajectory patterns:
 
-		python scripts/detect.py --model checkpoints/pidpm_model.pth --data data/test_dataset.csv --threshold 0.1 --output results/anomalies.csv						
+	  python scripts/detect.py --model checkpoints/pidpm_model.pth --data data/test_dataset.csv --threshold 0.1 --output results/anomalies.csv						
 
 Here:
 
