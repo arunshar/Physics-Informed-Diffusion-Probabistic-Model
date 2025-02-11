@@ -99,5 +99,4 @@ python scripts/generate.py --model checkpoints/pidpm_model.pth --num_samples 50 
       ├── data/                    # Directory for datasets (not included in repo, user-provided)
       ├── results/                 # Output directory for results (model checkpoints, anomaly outputs, synthetic data)
       ├── requirements.txt         # List of required Python packages
-      ├── LICENSE                  # License file (MIT License)
       └── README.md                # Documentation (this file)																																
