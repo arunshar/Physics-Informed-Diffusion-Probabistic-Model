@@ -1,0 +1,12 @@
+einops==0.8.0
+matplotlib==3.10.0
+numpy==2.2.2
+packaging==24.2
+pandas==2.2.3
+PyYAML==6.0.1
+PyYAML==6.0.2
+scikit_learn==1.6.1
+scipy==1.15.1
+torch==2.4.1
+torchvision==0.19.1
+tqdm==4.67.1
