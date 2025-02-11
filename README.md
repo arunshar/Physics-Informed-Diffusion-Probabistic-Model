@@ -2,16 +2,13 @@
  Implementation of KDD 2025 Research Track Submission: "Physics-Informed Diffusion Probabilistic Model (Pi-DPM) for Anomaly Detection in Trajectories: A Summary of Results
 
 ## Overview
-Pi-DPM is a physics-informed generative model designed for anomaly detection in trajectory data. It leverages the Denoising Diffusion Probabilistic Model (DDPM) framework to learn the normal patterns of object trajectories, then detects anomalies as deviations from these patterns. Unlike standard diffusion models, Pi-DPM integrates physics-based constraints into the generation process, ensuring that synthetic trajectories remain physically plausible and adhere to known motion laws. This combination of data-driven learning and physics-informed priors improves the alignment of generated trajectories with real-world dynamics and provides a natural regularization against overfitting.
+Pi-DPM leverages the Denoising Diffusion Probabilistic Model (DDPM) framework to learn the normal patterns of object trajectories, then detects anomalies as deviations from these patterns. Unlike standard diffusion models, Pi-DPM integrates physics-based constraints into the generation process, ensuring that synthetic trajectories remain physically plausible and adhere to known motion laws. This combination of data-driven learning and physics-informed priors improves the alignment of generated trajectories with real-world dynamics and provides a natural regularization against overfitting.
 
 ## Key Features
-- Physics-Informed Generation: Incorporates physical constraints (e.g., kinematic limits or conservation laws) into the diffusion model to produce realistic trajectory reconstructions and samples.
 
-- Unsupervised Anomaly Detection: Learns the distribution of normal trajectories from unlabeled data and flags trajectories with high reconstruction error as anomalies, eliminating the need for labeled anomalies during training.
-
-- Robust Diffusion Framework: Builds on the DDPM paradigm for stable training and high-fidelity trajectory generation, avoiding issues like mode collapse common in GANs/VAEs.
-
-- Synthetic Trajectory Synthesis: Can generate new plausible trajectories that follow learned dynamics, useful for data augmentation or simulation scenarios.
+- **Trajectory Generation**: Learn a diffusion model to generate new trajectories similar to those in the training data.
+- **Physics-Informed Constraints**: Incorporate domain knowledge (e.g., smooth motion, dynamics equations) via an additional loss term to guide the model.
+- **Anomaly Detection**: Compute anomaly scores for new trajectories based on reconstruction error under the diffusion model, flagging trajectories that deviate from normal patterns.
 
 ## Requirements
 
@@ -87,16 +84,24 @@ python scripts/generate.py --model checkpoints/pidpm_model.pth --num_samples 50 
       python scripts/generate.py --model checkpoints/pidpm_model.pth --num_samples 50 --out results/synthetic_trajectories.csv
 
 
-### Code Structure
-
-      Pi-DPM/ 
-      ├── pidpm/                   # Core Python package for the Pi-DPM model
-      │   ├── diffusion.py         # Diffusion model implementation (forward & reverse process)
-      │   ├── physics.py           # Module for physics-informed constraints and losses
-      │   ├── models.py            # Neural network architectures for trajectory encoding/decoding
-      │   ├── utils.py             # Helper functions (data loading, metrics, etc.)
-      ├── scripts/                 # Scripts for training, inference, and generation
-      ├── data/                    # Directory for datasets (not included in repo, user-provided)
-      ├── results/                 # Output directory for results (model checkpoints, anomaly outputs, synthetic data)
-      ├── requirements.txt         # List of required Python packages
-      └── README.md                # Documentation (this file)																																
+## Project Structure
+```text
+Physics-Informed-Diffusion-Probabistic-Model/
+├── pidpm/                   # Core Python package for the Pi-DPM model
+│   ├── __init__.py          # Init file for package
+│   ├── diffusion.py         # Diffusion model implementation (forward & reverse process)
+│   ├── physics.py           # Module for physics-informed constraints and losses
+│   ├── models.py            # Neural network architectures for trajectory encoding/decoding
+│   ├── utils.py             # Helper functions (data loading, metrics, etc.)
+│   └── __init__.py          # Init file for package
+├── scripts/                 # Scripts for training, inference, and generation
+│   ├── train.py             # Script to train the Pi-DPM model on a dataset
+│   ├── detect.py            # Script to compute anomaly scores for trajectories using a trained model
+│   └── generate.py          # Script to generate synthetic trajectories from the model
+├── data/                    # Directory for datasets (user-provided, not included in repository)
+│   └── sample_dataset.csv   # Example placeholder for trajectory data
+├── results/                 # Output directory for results (model checkpoints, anomaly outputs, synthetic data)
+├── requirements.txt         # List of required Python packages for Pi-DPM
+├── LICENSE                  # MIT License for this project
+└── README.md                # Project documentation (this file)
+																															
