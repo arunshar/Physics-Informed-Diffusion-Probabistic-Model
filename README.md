@@ -1,5 +1,5 @@
 # Physics-Informed Diffusion Probabistic Model
- Implementation of KDD 2025 Research Track Submission: "Physics-Informed Diffusion Probabilistic Model (Pi-DPM) for Anomaly Detection in Trajectories: A Summary of Results
+ Implementation of SIGSPATIAL 2025 Research Track Submission: "Physics-Informed Diffusion Probabilistic Model (Pi-DPM) for Anomaly Detection in Trajectories: A Summary of Results"
 
 ## Overview
 Pi-DPM leverages the Denoising Diffusion Probabilistic Model (DDPM) framework to learn the normal patterns of object trajectories, then detects anomalies as deviations from these patterns. Unlike standard diffusion models, Pi-DPM integrates physics-based constraints into the generation process, ensuring that synthetic trajectories remain physically plausible and adhere to known motion laws. This combination of data-driven learning and physics-informed priors improves the alignment of generated trajectories with real-world dynamics and provides a natural regularization against overfitting.
