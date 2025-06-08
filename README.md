@@ -1,4 +1,4 @@
-# Physics-Informed Diffusion Probabistic Model
+# Physics-Informed Diffusion Probabilistic Model
  Implementation of SIGSPATIAL 2025 Research Track Submission: "Physics-Informed Diffusion Probabilistic Model (Pi-DPM) for Anomaly Detection in Trajectories: A Summary of Results"
 
 ## Overview
